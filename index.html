@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Único de Saúde (SUS)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e6f0fa;
+      color: #333;
+    }
+
+    /* Cabeçalho dinâmico */
+    header {
+      position: relative;
+      height: 300px;
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: url('https://f.i.uol.com.br/fotografia/2020/09/22/16007890845f6a1a5ca7d30_1600789084_3x2_md.jpg') no-repeat center center/cover;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    header h1, header p {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      animation: slideDown 1s ease-out;
+    }
+
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+      animation: fadeIn 2s ease-out;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #3399ff;
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffeb3b;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Títulos padronizados */
+    section h2 {
+      font-size: 2em;
+      color: #004080;
+      text-align: center;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+      font-family: 'Arial Black', Arial, sans-serif;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+
+    #antes-depois h2 {
+      font-size: 2.5em;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .toggle-content {
+      display: none;
+      margin-top: 10px;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .toggle-btn {
+      cursor: pointer;
+      color: #0066cc;
+      font-weight: bold;
+      border: none;
+      background: none;
+      padding: 0;
+      font-size: 1em;
+    }
+
+    .video-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .video-container iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      border-radius: 8px;
+    }
+
+    .image-comparison {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .image-comparison div {
+      text-align: center;
+      flex: 1 1 45%;
+    }
+
+    .image-comparison img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 10px;
+    }
+
+    /* Criadores SUS padronizados */
+    #criadores-sus {
+      padding: 20px;
+    }
+
+    #criadores-sus .criador {
+      display: flex;
+      align-items: center;
+      margin: 15px 0;
+    }
+
+    #criadores-sus .criador img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-right: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    #criadores-sus .criador p {
+      font-size: 16px;
+      margin: 0;
+      color: #333;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #3399ff;
+      color: white;
+      font-weight: bold;
+    }
+
+    footer a {
+      color: #ffeb3b;
+      text-decoration: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Sistema Único de Saúde (SUS)</h1>
+    <p>Garantindo saúde para todos os brasileiros!</p>
+  </header>
+
+  <nav>
+    <a href="#historico">Histórico</a>
+    <a href="#principios">Princípios</a>
+    <a href="#diretrizes">Diretrizes</a>
+    <a href="#estrutura">Estrutura</a>
+    <a href="#resumo">Resumo</a>
+    <a href="#criadores-sus">Criadores</a>
+    <a href="#antes-depois">Antes e Depois</a>
+    <a href="#programas">Programas</a>
+  </nav>
+
+  <section id="historico">
+    <h2>Contexto Histórico</h2>
+    <button class="toggle-btn">Mostrar / Ocultar</button>
+    <div class="toggle-content">
+      <p>O SUS surge após a Constituição de 1988, fruto da Reforma Sanitária, que transformou a saúde em direito de todos e dever do Estado. Antes disso, a saúde no Brasil era fragmentada, desigual e voltada apenas para trabalhadores formais, deixando grande parte da população sem assistência. O INAMPS (Instituto Nacional de Assistência Médica da Previdência Social) concentrava os recursos para trabalhadores, excluindo camadas mais pobres.</p>
+      <p>A mobilização de profissionais da saúde, acadêmicos e movimentos sociais possibilitou a criação de um sistema público, universal e integral, capaz de atender toda a população brasileira. A Constituição de 1988 consolidou o princípio da saúde como direito de todos, inspirando políticas de prevenção, promoção e assistência em todas as regiões do país.</p>
+    </div>
+  </section>
+
+  <section id="principios">
+    <h2>Princípios do SUS</h2>
+    <button class="toggle-btn">Mostrar / Ocultar</button>
+    <div class="toggle-content">
+      <ul>
+        <li><strong>Universalidade:</strong> acesso à saúde para todos sem discriminação.</li>
+        <li><strong>Integralidade:</strong> atenção que integra promoção, prevenção, tratamento e reabilitação.</li>
+        <li><strong>Equidade:</strong> tratar desigualmente os desiguais para reduzir desigualdades em saúde.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="diretrizes">
+    <h2>Diretrizes do SUS</h2>
+    <button class="toggle-btn">Mostrar / Ocultar</button>
+    <div class="toggle-content">
+      <ul>
+        <li><strong>Descentralização:</strong> responsabilidades distribuídas entre União, estados e municípios.</li>
+        <li><strong>Regionalização:</strong> organização de serviços em regiões com base nas necessidades locais.</li>
+        <li><strong>Hierarquização:</strong> serviços estruturados em níveis de complexidade, do básico ao especializado.</li>
+        <li><strong>Participação Social:</strong> conselhos e conferências para envolver a população nas decisões.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="estrutura">
+    <h2>Estrutura do SUS</h2>
+    <button class="toggle-btn">Mostrar / Ocultar</button>
+    <div class="toggle-content">
+      <p>O SUS é organizado em três níveis:</p>
+      <ul>
+        <li><strong>Ministério da Saúde:</strong> formulação e coordenação das políticas nacionais.</li>
+        <li><strong>Secretarias Estaduais:</strong> implementação das políticas nos estados.</li>
+        <li><strong>Secretarias Municipais:</strong> execução das ações no nível local.</li>
+      </ul>
+      <p>Instituições como Fiocruz, ANVISA e FUNASA complementam a estrutura, garantindo ciência, regulação e assistência em saúde.</p>
+    </div>
+  </section>
+
+  <section id="resumo">
+    <h2>Um Breve Resumo do SUS</h2>
+    <button class="toggle-btn">Mostrar / Ocultar</button>
+    <div class="toggle-content">
+      <p>O SUS é o maior sistema público de saúde do mundo, oferecendo serviços gratuitos e de qualidade, abrangendo desde atenção básica até transplantes e programas de vacinação em massa. Ele garante saúde como direito universal, com foco em prevenção, promoção e equidade.</p>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/YJaEz2qBveY" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="criadores-sus">
+    <h2>Principais Criadores do SUS</h2>
+    <button class="toggle-btn">Mostrar / Ocultar</button>
+    <div class="toggle-content">
+      <div class="criador">
+        <img src="https://upload.wikimedia.org/wikipedia/pt/8/85/Ant%C3%B4nio_S%C3%A9rgio_Arouca%2C_presidente_da_FioCruz.jpeg" alt="Sérgio Arouca">
+        <p><strong>Sérgio Arouca</strong><br>Sanitarista e ex-presidente da Fiocruz, articulador da Reforma Sanitária.</p>
+      </div>
+      <div class="criador">
+        <img src="https://www.cafehistoria.com.br/wp-content/uploads/2020/12/Hesio-de-Albuquerque-Cordeiro-SUS.jpg" alt="Hésio de Albuquerque Cordeiro">
+        <p><strong>Hésio de Albuquerque Cordeiro</strong><br>Pioneiro do SUS, responsável por implementar princípios da Reforma Sanitária no INAMPS.</p>
+      </div>
+      <div class="criador">
+        <img src="https://futurodasaude.com.br/wp-content/uploads/2023/01/Temporao-cancer_Elza-Fiuza_ABr-scaled-e1674746428517.jpg" alt="José Gomes Temporão">
+        <p><strong>José Gomes Temporão</strong><br>Ex-ministro da Saúde e defensor das políticas públicas do SUS.</p>
+      </div>
+      <div class="criador">
+        <img src="https://yt3.googleusercontent.com/ytc/AIdro_n4liKu1r5wguiajgal9cVP4fLgpt6tjZI4zS02GtXkLIE=s900-c-k-c0x00ffffff-no-rj" alt="Odorico Monteiro">
+        <p><strong>Odorico Monteiro</strong><br>Implementou políticas inovadoras como o Programa Saúde da Família.</p>
+      </div>
+      <div class="criador">
+        <img src="https://medicinasa.com.br/wp-content/uploads/2020/08/Eugenio-Vila%C3%A7a2.jpg" alt="Eugênio Vilaça Mendes">
+        <p><strong>Eugênio Vilaça Mendes</strong><br>Contribuiu para a organização de sistemas e redes de atenção à saúde.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="antes-depois">
+    <h2>Antes e Depois do SUS</h2>
+    <button class="toggle-btn">Mostrar / Ocultar</button>
+    <div class="toggle-content">
+      <div class="image-comparison">
+        <div>
+          <h3>Antes do SUS</h3>
+          <img src="https://cdn.prod.website-files.com/60ff690cd7b0537edb99a29a/6227a31df894bf5ca070a99e_inamps-antes-do-sus.jpg" alt="Antes do SUS 1">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHtS0U9v8x9D6f3SE2e9gmn5_cAYmEnvHazg&s" alt="Antes do SUS 2">
+        </div>
+        <div>
+          <h3>Depois do SUS</h3>
+          <img src="https://mst.org.br/wp-content/uploads/2020/03/sus_vale_esta.jpg" alt="Depois do SUS 1">
+          <img src="https://riosaude.prefeitura.rio/wp-content/uploads/sites/66/2023/09/WhatsApp-Image-2023-09-19-at-13.32.39.jpeg" alt="Depois do SUS 2">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="programas">
+    <h2>Principais Programas e Avanços</h2>
+    <button class="toggle-btn">Mostrar / Ocultar</button>
+    <div class="toggle-content">
+      <ul>
+        <li><strong>Programa Saúde da Família (PSF):</strong> prevenção e promoção da saúde na comunidade.</li>
+        <li><strong>Programa Nacional de Imunizações (PNI):</strong> vacinação em massa, contribuindo para erradicação de doenças.</li>
+        <li><strong>Farmácia Popular:</strong> medicamentos gratuitos ou a preços reduzidos.</li>
+      </ul>
+      <p>O SUS também se destaca em controle de epidemias, transplantes, saúde bucal e atenção à saúde mental.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Fonte: <a href="https://www.gov.br/saude/pt-br/sus" target="_blank">Site oficial do SUS</a></p>
+  </footer>
+
+  <script>
+    const buttons = document.querySelectorAll('.toggle-btn');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling;
+        content.style.display = content.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+
+    const links = document.querySelectorAll('nav a');
+    links.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>
